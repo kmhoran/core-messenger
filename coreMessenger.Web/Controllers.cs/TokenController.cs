@@ -13,11 +13,11 @@ namespace coreMessenger.Web.Controllers
 {
     public class TokenController: Controller
     {
-        private readonly SignInManager<ApplicationUser> SignInManager;
+        private readonly SignInManager<IdentityUser> SignInManager;
         private readonly IConfiguration config;
 
         public TokenController(
-            SignInManager<ApplicationUser> signInManager,
+            SignInManager<IdentityUser> signInManager,
             IConfiguration config)
         {
             this.SignInManager = signInManager;
