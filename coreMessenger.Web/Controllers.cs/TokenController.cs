@@ -1,6 +1,7 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using coreMessenger.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,14 +13,14 @@ namespace coreMessenger.Web.Controllers
 {
     public class TokenController: Controller
     {
-        // private readonly SignInManager<ApplicationUser> SignInManager;
+        private readonly SignInManager<ApplicationUser> SignInManager;
         private readonly IConfiguration config;
 
         public TokenController(
-            // SignInManager<ApplicationUser> signInManager,
+            SignInManager<ApplicationUser> signInManager,
             IConfiguration config)
         {
-            //this.SignInManager = signInManager;
+            this.SignInManager = signInManager;
             this.config = config;
         }
 
@@ -52,7 +53,19 @@ namespace coreMessenger.Web.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-
+        [HttpPost ("api/token")]
+        public async Task<IActionResult> GetTokenForCredentialAsync(
+            [FromBody] LoginRequest login)
+        {
+            var result = await this.SignInManager.PasswordSignInAsync(
+                userName: login.Username, 
+                password: login.Password,
+                isPersistent: false,
+                lockoutOnFailure: false);
+            return result.Succeeded 
+            ? (IActionResult) Ok(GenerateToken(login.Username))
+            : Unauthorized();  
+        }
         
     }   
 }
