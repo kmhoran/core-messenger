@@ -35,3 +35,4 @@ msbuild.wrn
 
 # Node
 ClientApp/node_modules
+build/
