@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Foo from './bar';
+import FullPage from './shared/fullPage.component';
 
 ReactDOM.render(
-    <Foo />,
+    <FullPage />,
     document.getElementById('app')
 );

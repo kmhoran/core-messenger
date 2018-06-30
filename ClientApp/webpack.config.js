@@ -9,13 +9,15 @@ const config = {
     entry: APP_DIR + '/Client.js',
     output: {
         path: BUILD_DIR, 
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     mode: "development",
     devServer: {
         contentBase: PUBLIC_DIR,
         port: 9000,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     devtool: 'source-map',
     module: {
