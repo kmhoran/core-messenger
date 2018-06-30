@@ -34,9 +34,9 @@ msbuild.wrn
 .vs/
 
 # Node
-ClientApp/node_modules
+clientApp/node_modules
 build/
-ClientApp/package-lock.json
+clientApp/package-lock.json
 
 
 
