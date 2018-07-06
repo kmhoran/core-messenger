@@ -6,7 +6,7 @@ const PUBLIC_DIR = path.resolve(__dirname, 'public');
 const BUILD_DIR = path.resolve(__dirname, 'public/build');
 
 const config = {
-    entry: APP_DIR + '/Client.js',
+    entry: APP_DIR + '/client.js',
     output: {
         path: BUILD_DIR, 
         filename: 'bundle.js',
