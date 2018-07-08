@@ -113,6 +113,12 @@ namespace coreMessenger.Web
                 app.UseHsts();
             }
 
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("index.html");
+            
+            app.UseDefaultFiles(options);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
